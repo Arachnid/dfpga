@@ -1,0 +1,18 @@
+slice storage {
+  (u0 & r1) | (!u0 & l0) sync -> r0;
+  l0 <-> r0;
+}
+
+slice compare_carry {
+  !(l0 ^ r1) & u0 -> d0;
+}
+
+slice compare {
+  !(l0 ^ r1) -> d0;
+  u0 </> d0;
+}
+
+storage compare,
+storage compare_carry,
+storage compare_carry,
+storage compare_carry

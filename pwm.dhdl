@@ -1,0 +1,30 @@
+slice toggler {
+  !r1 sync -> r1;
+  r1 -> d0;
+}
+
+slice counter {
+  r1 ^ u0 sync -> r1;
+  r1 & u0 -> d0;
+}
+
+slice top_comparator {
+  !(l0 ^ r1) -> d0;
+}
+
+slice comparator {
+  !(l0 ^ r1) & u0 -> d0;
+}
+
+slice overflow_pass {
+  u0 -> r0;
+}
+
+slice srlatch {
+  (r0 | u0) & !l0 sync -> r0;
+}
+
+toggler top_comparator,
+counter comparator,
+counter comparator,
+overflow_pass srlatch
